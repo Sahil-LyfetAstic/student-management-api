@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { connectDB } from './config/db';
 
 
 dotenv.config();
@@ -7,6 +8,12 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+
+// Connect to MongoDB
+connectDB().then(() => {
+    // // Seed admin user
+    // seedAdmin();
+  });
 
 
 const PORT = process.env.PORT || 3000;
