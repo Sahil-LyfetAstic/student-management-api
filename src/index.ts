@@ -19,9 +19,9 @@ connectDB().then(() => {
   });
 
 // Routes
-app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/student', studentRoutes);
-app.use('/api/v1/task', taskRoutes);
+app.use('/api/v1', authRoutes);
+app.use('/api/v1', studentRoutes);
+app.use('/api/v1', taskRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

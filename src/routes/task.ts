@@ -5,10 +5,10 @@ import { addTask, getMyTasks, getTasks, updateTaskStatus } from '../controllers/
 
 const router = Router();
 
-router.get('/', authMiddleware(['admin']), getTasks);
-router.post('/', authMiddleware(['admin']), addTask);
+router.get('/task', authMiddleware(['admin']), getTasks);
+router.post('/task', authMiddleware(['admin']), addTask);
 
 /** Get Task to Students */
-router.get('/mine', authMiddleware(['student']), getMyTasks);
-router.put('/mine', authMiddleware(['student']), updateTaskStatus);
+router.get('/task/mine', authMiddleware(['student']), getMyTasks);
+router.put('/task/mine', authMiddleware(['student']), updateTaskStatus);
 export default router;

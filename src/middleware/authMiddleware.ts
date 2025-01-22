@@ -14,7 +14,6 @@ const authMiddleware = (roles: string[]): (req: AuthenticatedRequest, res: Respo
 
     try {
       const decoded = verifyToken(token);
-      console.log("Decoded Token:", decoded);
       if (!roles.includes(decoded.role)) {
         return res.status(403).json({ message: "Access denied" });
       }
