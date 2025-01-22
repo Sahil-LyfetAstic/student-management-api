@@ -7,8 +7,9 @@ import {generateToken} from '../utils/JwtUtil';
 
 export const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password } = req.body;
-  console.log('Login request:', email, password);
-
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email and password are required' });
+  }
   try {
     const user: IUser | null = await User.findOne({ email });
     if (!user) {

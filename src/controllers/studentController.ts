@@ -15,7 +15,6 @@ export const getStudents = async (req: Request, res: Response): Promise<any> => 
 
 export const addStudent = async (req: Request, res: Response): Promise<any> => {
     try {
-        console.log('Add student request:', req.body);
         const { name, email, department, password } = req.body;
         const newStudent = new User({
             name,
