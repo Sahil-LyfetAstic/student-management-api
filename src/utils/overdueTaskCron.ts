@@ -3,9 +3,8 @@ import { DateTime } from 'luxon';
 import Task from '../models/Task';
 
 /**Cron job to check and update overdue tasks every midnight */
-cron.schedule('* * * * *', async () => {
+cron.schedule('0 0 * * *', async () => {
   try {
-    console.log('Checking for overdue tasks...');
     const currentDate = DateTime.now().toISODate();
 
        const overdueTasks = await Task.updateMany(
