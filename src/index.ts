@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db';
 import authRoutes from './routes/auth';
 import studentRoutes from './routes/student';
+import taskRoutes from './routes/task';
 import seedAdmin from './seeder/AdminSeeder';
 
 dotenv.config();
@@ -16,11 +17,10 @@ connectDB().then(() => {
      seedAdmin();
   });
 
-
-
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/students', studentRoutes);
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/student', studentRoutes);
+app.use('/api/v1/task', taskRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

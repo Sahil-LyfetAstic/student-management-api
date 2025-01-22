@@ -19,7 +19,7 @@ export interface IStudent {
 export interface ITask {
   title: string;
   description: string;
-  assignedTo: string; // student email
+  user_id: string;
   dueDate: Date;
   status: 'pending' | 'completed' | 'overdue';
 }

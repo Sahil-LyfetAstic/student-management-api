@@ -5,10 +5,10 @@ import { addStudent, getStudentById, getStudents } from '../controllers/studentC
 const router = Router();
 
 
-router.get('/students',authMiddleware(['admin']), getStudents);
-router.get('/students/:id', authMiddleware(['admin']),getStudentById);
-router.post('/students', authMiddleware(['admin']),addStudent);
-router.put('/students/:id', /* Update student logic */);
+router.get('/',authMiddleware(['admin']), getStudents);
+router.get('/:id', authMiddleware(['admin']),getStudentById);
+router.put('/:id', /* Update student logic */);
+router.post('/', authMiddleware(['admin']),addStudent);
 
 
 export default router;
