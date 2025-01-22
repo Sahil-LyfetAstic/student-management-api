@@ -22,15 +22,27 @@ const userSchema = new mongoose.Schema<IUser>({
   },
 });
 
-userSchema.pre('save', async function(next) {
+// Hash the password before saving the document
+userSchema.pre('save', async function (next) {
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 10);
   }
   next();
 });
 
-userSchema.methods.comparePassword = async function(password: string): Promise<boolean> {
-  return bcrypt.compare(password, this.password);
-};
+// Exclude the password field when the document is converted to JSON or Object
+userSchema.set('toJSON', {
+  transform: (doc, ret) => {
+    delete ret.password;
+    return ret;
+  },
+});
+
+userSchema.set('toObject', {
+  transform: (doc, ret) => {
+    delete ret.password;
+    return ret;
+  },
+});
 
 export default mongoose.model<IUser>('User', userSchema);
