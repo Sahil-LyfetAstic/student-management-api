@@ -40,6 +40,9 @@ export const addTask = async (req: Request, res: Response): Promise<any> => {
     return res.status(201).json({ message: 'Task added successfully', task: newTask });
   } catch (error: any) {
     console.error('Add task error:', error);
+    if (error.code === 11000) {
+      return res.status(400).json({ message: 'Task already exists' });
+    }
     return res.status(500).json({ message: 'Internal server error' });
   }
 }
@@ -55,6 +58,7 @@ export const getMyTasks = async (req: CustomRequest, res: Response): Promise<any
     return res.status(500).json({ message: 'Internal server error' });
   }
 }
+
 
 export const updateTaskStatus = async (req: Request, res: Response): Promise<any> => {
   try {
