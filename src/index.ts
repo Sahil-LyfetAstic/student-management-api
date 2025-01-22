@@ -5,6 +5,7 @@ import authRoutes from './routes/auth';
 import studentRoutes from './routes/student';
 import taskRoutes from './routes/task';
 import seedAdmin from './seeder/AdminSeeder';
+import './utils/overdueTaskCron';
 
 dotenv.config();
 
