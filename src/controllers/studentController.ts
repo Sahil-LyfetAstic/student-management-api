@@ -43,7 +43,6 @@ export const getStudentById = async (req: Request, res: Response): Promise<any> 
     console.log('Get student by id request:', req.params.id);
     try {
         const student: IStudent | null = await User.findOne({ _id: req.params.id, role: 'student' });
-        console.log('Get student by id:', student);
         if (!student) {
             return res.status(404).json({ message: 'Student not found' });
         }

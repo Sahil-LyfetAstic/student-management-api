@@ -64,8 +64,6 @@ export const updateTaskStatus = async (req: Request, res: Response): Promise<any
   try {
     const taskId = req.query.id;
     const { status } = req.body;
-    console.log('status', status);
-    console.log('taskId', taskId);
     const task = await Task.findById(taskId);
 
     if (!task) {
